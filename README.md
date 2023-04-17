@@ -1,20 +1,23 @@
 ## Informations générales
 
-Ce fichier sert à donner des informations sur le projet de l'entreprise {nom de l'entreprise} et les outils utilisés pour le développement des produits.
+Ce fichier sert à donner des informations sur le projet Teach-Me et les outils utilisés pour le développement des produits.
 
-## {Nom de l'entreprise}
+## Teach-Me
 
 ## Type de produits à développer
 
-Les élèves doivent renseigner le type de produits qu'ils souhaitent développer : {type de produit} (Une App ou un site web)
+Les élèves doivent renseigner le type de produits qu'ils souhaitent développer : 
+- Site Web
+- App mobile (bonus)
+
 
 ## Outils utilisés
 
 Les outils utilisés pour le développement des produits sont les suivants :
 
-- {outils 1}
-- {outils 2}
-- {outils 3}
+- Next JS
+- MongoDB 
+- React-native
 
 ## Stratégie pour le CI/CD
 
