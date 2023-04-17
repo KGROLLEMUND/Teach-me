@@ -33,8 +33,8 @@ Objectifs spécifiques et mesurables à atteindre:
     - Permettre aux professeurs de créer, modifier et supprimer des cours
     - Permettre aux étudiants de rejoindre des cours existants et gérer leur profil
     - Permettre aux utilisateurs de rechercher des professeurs par matière
-    - Intégrer un système de paiement en ligne pour les cours particuliers
-    - Contraintes techniques, budgétaires, temporelles et réglementaires:
+    - Intégrer un système de paiement en ligne pour les cours particuliers( bonus)
+Contraintes techniques, budgétaires, temporelles et réglementaires:
     - Utiliser MongoDB comme base de données pour stocker les informations des utilisateurs et des cours
     - Respecter les normes de sécurité pour protéger les données sensibles des utilisateurs
     - Respecter le budget et les délais du projet
@@ -90,10 +90,10 @@ Pour le front-end, nous utiliserons des technologies telles que React.js, HTML, 
 Les maquettes et prototypes seront réalisées à l'aide d'outils tels que Sketch ou Figma.
 
 ## 6. Planification et organisation
-Phase 1: Conception et Planification (2 semaines)
-Phase 2: Développement Backend (4 semaines)
-Phase 3: Développement Frontend (4 semaines)
-Phase 4: Tests et Déploiement (2 semaines)
+Phase 1: Conception et Planification (2 jours)
+Phase 2: Développement Backend (2 semaines)
+Phase 3: Développement Frontend (2 semaines)
+Phase 4: Tests et Déploiement (1 semaines)
 
 ## 7. Méthodologie et gestion de projet
 Nous utiliserons la méthodologie Agile pour le développement de notre projet.
