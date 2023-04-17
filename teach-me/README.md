@@ -1,18 +1,5 @@
 ## Cahier des charges
 
-1. Créer l'API pour notre site web
-    - Register/Login (Prof/Etudiant)
-    - Profil
-    - Créer/Modifier/Supprimer un cours(Prof)
-    - Créer/Modifier/Supprimer une matière(admin)
-    - Rejoindre un cours(Etudiant)
-    - Search Bar pour trouver un prof ou une matière 
-2. Créer la base de données sur MongoDB et la lier au projet
-2. Design du site
-4. Créer le Front du site web
-5. Lier le back et le front du site web
-6. Déployer le site web sur AWS
-
 Cahier des charges pour la création d'une API pour un site web de cours particuliers
 
 ## 1. Introduction
@@ -93,7 +80,7 @@ Les maquettes et prototypes seront réalisées à l'aide d'outils tels que Sketc
 Phase 1: Conception et Planification (2 jours)
 Phase 2: Développement Backend (2 semaines)
 Phase 3: Développement Frontend (2 semaines)
-Phase 4: Tests et Déploiement (1 semaines)
+Phase 4: Tests et Déploiement (1 semaine)
 
 ## 7. Méthodologie et gestion de projet
 Nous utiliserons la méthodologie Agile pour le développement de notre projet.
