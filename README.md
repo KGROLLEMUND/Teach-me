@@ -33,3 +33,5 @@ La stratégie pour le CI/CD est la suivante :
 
 - Front (Filipp, Zakia, Rihab)
 - API (Kyllian, Sofiane)
+
+https://github.com/users/KGROLLEMUND/projects/1
