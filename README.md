@@ -6,9 +6,17 @@ Ce fichier sert à donner des informations sur le projet Teach-Me et les outils 
 
 ## Type de produits à développer
 
-Les élèves doivent renseigner le type de produits qu'ils souhaitent développer : 
 - Site Web
-- App mobile (bonus)
+
+## Fonctionnalité attendu pour le 20/05
+
+- Register/login
+- Page home
+    - Search Bar
+    - Liste des profs
+    - Demande d'un étudiant pour un cours avec un prof 
+    - Prof accepte ou non la demande
+- Page de profil
 
 
 ## Outils utilisés
