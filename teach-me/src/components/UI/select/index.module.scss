@@ -1,6 +1,6 @@
 @import "@/styles/colors.scss";
 
-.input {
+.select {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -14,19 +14,15 @@
   max-width: 24rem;
 
   label {
-    margin-right: 0.5rem;
     text-align: left;
     width: 8rem;
   }
-
-  input,
-  textarea {
+  
+  select {
     display: inline-block;
     font-size: large;
 
     width: 100%;
-
-    resize: none;
 
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -38,23 +34,24 @@
     border-radius: 0.5rem;
 
     color: $fourth-color;
-
+    
     transition: all 0.25s ease-in-out;
-
+    
     &:not(:disabled):hover {
       border: 1px solid $fourth-color;
       background-color: shade($primary-color, 40);
     }
-
+    
     &:not(:disabled):focus {
       outline: none;
       background-color: $fourth-color;
       color: shade($primary-color, 40);
     }
-
+    
     &:disabled {
       border: 1px solid shade($primary-color, 40);
       background-color: shade($primary-color, 40);
+      color: $fourth-color;
     }
 
     &::placeholder {
@@ -66,6 +63,8 @@
       margin: auto;
       text-align: center;
 
+      width: 100%;
+
       &::before {
         content: attr(data-content);
       }
@@ -75,9 +74,6 @@
         color: shade($primary-color, 40);
       }
     }
-
-    &[type="number"]::-webkit-inner-spin-button {
-      opacity: 0;
-    }
   }
+
 }

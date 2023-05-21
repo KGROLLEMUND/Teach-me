@@ -1,0 +1,145 @@
+@import "@/styles/colors.scss";
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  height: 3rem;
+  width: 100%;
+
+  border-bottom: 1px solid $fourth-color;
+  background-color: shade($primary-color, 40);
+
+  user-select: none;
+
+  .title {
+    margin-left: 2rem;
+    margin-right: 2rem;
+
+    a {
+      transition: all 0.25s ease-in-out;
+      text-decoration: none;
+      color: $fourth-color;
+    }
+
+    a:hover {
+      color: $trird-color;
+    }
+  }
+
+  .links {
+    display: flex;
+    flex-direction: row;
+
+    margin-left: 2rem;
+    margin-right: 2rem;
+
+    height: 100%;
+    a {
+      display: flex;
+      align-items: center;
+
+      padding-left: 1rem;
+      padding-right: 1rem;
+
+      transition: all 0.25s ease-in-out;
+      text-decoration: none;
+      color: $fourth-color;
+      height: 100%;
+    }
+
+    a:hover {
+      color: $trird-color;
+    }
+  }
+
+  .menu {
+    position: relative;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    height: 100%;
+
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      color: $trird-color;
+    }
+
+    .submenu {
+      position: absolute;
+      top: 125%;
+      width: max-content;
+
+      :first-child {
+        border: 1px solid $fourth-color;
+        border-bottom: 0;
+        border-top-right-radius: 0.5rem;
+        border-top-left-radius: 0.5rem;
+      }
+
+      :last-child {
+        border: 1px solid $fourth-color;
+        border-top: 0;
+        border-bottom-right-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+      }
+
+      :not(:last-child, :first-child) {
+        border: 1px solid $fourth-color;
+        border-top: 0;
+        border-bottom: 0;
+      }
+
+      & > * {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+
+        background-color: shade($primary-color, 40);
+        color: $fourth-color;
+        transition: all 0.25s ease-in-out;
+
+        &:hover {
+          :last-child {
+            color: shade($primary-color, 40);
+          }
+
+          border-color: shade($trird-color, 20);
+          background-color: $trird-color;
+          color: shade($primary-color, 40);
+
+          svg {
+            stroke: shade($primary-color, 40);
+          }
+        }
+
+        &:active {
+          :last-child {
+            color: shade($primary-color, 40);
+          }
+
+          border-color: shade($trird-color, 20);
+          background-color: shade($trird-color, 20);
+          color: shade($primary-color, 40);
+
+          svg {
+            stroke: shade($primary-color, 40);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+@import "@/styles/colors.scss";
+
+.notification {
+  border: 1px solid $fourth-color;
+  border-radius: 0.5rem;
+
+  background-color: shade($primary-color, 40);
+  color: $fourth-color;
+
+  transition: all 0.25s ease-in-out;
+  user-select: none;
+
+
+  svg {
+    transition: all 0.25s ease-in-out;
+    fill: $trird-color;
+  }
+
+  &:hover {
+    border: 1px solid $trird-color;
+    background-color: $trird-color;
+    color: shade($primary-color, 40);
+
+    svg {
+      fill: shade($primary-color, 40);
+    }
+  }
+
+  &:active {
+    border: 1px solid shade($trird-color, 20);
+    background-color: shade($trird-color, 20);
+    color: shade($primary-color, 40);
+
+    svg {
+      fill: shade($primary-color, 40);
+    }
+  }
+}

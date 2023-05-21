@@ -1,0 +1,11 @@
+$primary-color: #303841;
+$second-color: #3a4750;
+$trird-color: #f6c90e;
+$fourth-color: #eeeeee;
+
+@function tint($color, $percentage){
+    @return mix(white, $color, $percentage);
+}
+@function shade($color, $percentage){
+    @return mix(black, $color, $percentage);
+}
