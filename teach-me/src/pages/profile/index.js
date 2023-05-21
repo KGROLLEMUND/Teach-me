@@ -125,37 +125,22 @@ const Index = () => {
     }
 
     if (event.target.name.split(".")[0] == "prof") {
-      if (event.target.name.split(".")[1] == "address") {
-        setForm({
-          ...form,
-          prof: {
-            ...form.prof,
-            address: {
-              ...form.prof.address,
-              [event.target.name.split(".")[2]]: event.target.value,
-            },
-          },
-        });
-      } else {
-        setForm({
-          ...form,
-          prof: {
-            ...form.prof,
-            [event.target.name.split(".")[1]]: event.target.value,
-          },
-        });
-      }
+      setForm({
+        ...form,
+        prof: {
+          ...form.prof,
+          [event.target.name.split(".")[1]]: event.target.value,
+        },
+      });
     }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-
-
     if (event.target.name == "Save") {
       console.log(form);
-      
+
       userUpdate.fetchData();
       updateUser(form);
       if (!user.isAdmin) {
@@ -230,36 +215,6 @@ const Index = () => {
                   placeholder=""
                   onChange={handleChange}
                   value={form.phone}
-                  disabled={!isEdit}
-                  required
-                />
-                <Input
-                  name="address.city"
-                  label="City:"
-                  type="text"
-                  placeholder="New York"
-                  onChange={handleChange}
-                  value={form.address.city}
-                  disabled={!isEdit}
-                  required
-                />
-                <Input
-                  name="address.zipCode"
-                  label="ZIP Code:"
-                  type="text"
-                  placeholder="56987"
-                  onChange={handleChange}
-                  value={form.address.zipCode}
-                  disabled={!isEdit}
-                  required
-                />
-                <Input
-                  name="address.street"
-                  label="Street:"
-                  type="text"
-                  placeholder="9, av. George Carlos"
-                  onChange={handleChange}
-                  value={form.address.street}
                   disabled={!isEdit}
                   required
                 />

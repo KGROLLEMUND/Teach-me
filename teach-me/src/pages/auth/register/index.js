@@ -25,11 +25,6 @@ const Index = () => {
     password: "",
     phone: "",
     userType: "",
-    address: {
-      city: "",
-      zipCode: "",
-      street: "",
-    },
   });
 
   const [formStudent, setFormStudent] = useState({
@@ -127,9 +122,7 @@ const Index = () => {
     }
 
     if (event.target.name.split(".")[0] == "student") {
-      if (
-        event.target.name.split(".")[1] == "niveauEtude" 
-      ) {
+      if (event.target.name.split(".")[1] == "niveauEtude") {
         setFormStudent({
           ...formStudent,
           [event.target.name.split(".")[1]]:
@@ -144,20 +137,10 @@ const Index = () => {
     }
 
     if (event.target.name.split(".")[0] == "prof") {
-      if (event.target.name.split(".")[1] == "address") {
-        setFormProf({
-          ...formProf,
-          address: {
-            ...formProf.address,
-            [event.target.name.split(".")[2]]: event.target.value,
-          },
-        });
-      } else {
-        setFormProf({
-          ...formProf,
-          [event.target.name.split(".")[1]]: event.target.value,
-        });
-      }
+      setFormProf({
+        ...formProf,
+        [event.target.name.split(".")[1]]: event.target.value,
+      });
     }
   };
 
@@ -218,33 +201,6 @@ const Index = () => {
               placeholder=""
               onChange={handleChange}
               value={form.phone}
-              required
-            />
-            <Input
-              name="address.city"
-              label="City:"
-              type="text"
-              placeholder="New York"
-              onChange={handleChange}
-              value={form.address.city}
-              required
-            />
-            <Input
-              name="address.zipCode"
-              label="ZIP Code:"
-              type="text"
-              placeholder="56987"
-              onChange={handleChange}
-              value={form.address.zipCode}
-              required
-            />
-            <Input
-              name="address.street"
-              label="Street:"
-              type="text"
-              placeholder="9, av. George Carlos"
-              onChange={handleChange}
-              value={form.address.street}
               required
             />
           </div>
