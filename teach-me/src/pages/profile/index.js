@@ -1,6 +1,6 @@
-import Button from "@/components/UI/button";
+import Button from "@/components/UI/Button";
 import Header from "@/components/UI/header";
-import Input from "@/components/UI/input";
+import Input from "@/components/UI/Input";
 import Loading from "@/components/UI/loading";
 import NavBar from "@/components/UI/navbar";
 import Notification from "@/components/UI/notification";
@@ -85,26 +85,13 @@ const Index = () => {
   };
 
   const handleChange = (event) => {
-    if (event.target.name.split(".")[0] == "address") {
-      setForm({
-        ...form,
-        address: {
-          ...form.address,
-          [event.target.name.split(".")[1]]: event.target.value,
-        },
-      });
-    } else {
-      setForm({
-        ...form,
-        [event.target.name]: event.target.value,
-      });
-    }
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+    });
 
     if (event.target.name.split(".")[0] == "student") {
-      if (
-        event.target.name.split(".")[1] == "rate" ||
-        event.target.name.split(".")[1] == "yearOfExperience"
-      ) {
+      if (event.target.name.split(".")[1] == "niveauEtude") {
         setForm({
           ...form,
           student: {
@@ -125,37 +112,20 @@ const Index = () => {
     }
 
     if (event.target.name.split(".")[0] == "prof") {
-      if (event.target.name.split(".")[1] == "address") {
-        setForm({
-          ...form,
-          prof: {
-            ...form.prof,
-            address: {
-              ...form.prof.address,
-              [event.target.name.split(".")[2]]: event.target.value,
-            },
-          },
-        });
-      } else {
-        setForm({
-          ...form,
-          prof: {
-            ...form.prof,
-            [event.target.name.split(".")[1]]: event.target.value,
-          },
-        });
-      }
+      setForm({
+        ...form,
+        prof: {
+          ...form.prof,
+          [event.target.name.split(".")[1]]: event.target.value,
+        },
+      });
     }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-
-
     if (event.target.name == "Save") {
-      console.log(form);
-      
       userUpdate.fetchData();
       updateUser(form);
       if (!user.isAdmin) {

@@ -1,6 +1,6 @@
-import Button from "@/components/UI/button";
+import Button from "@/components/UI/Button";
 import Header from "@/components/UI/header";
-import Input from "@/components/UI/input";
+import Input from "@/components/UI/Input";
 import Select from "@/components/UI/select";
 import Loading from "@/components/UI/loading";
 import Notification from "@/components/UI/notification";
@@ -25,16 +25,10 @@ const Index = () => {
     password: "",
     phone: "",
     userType: "",
-    address: {
-      city: "",
-      zipCode: "",
-      street: "",
-    },
   });
 
   const [formStudent, setFormStudent] = useState({
     niveauEtude: 1,
-    yearOfExperience: 1,
   });
 
   const [formProf, setFormProf] = useState({
@@ -111,25 +105,13 @@ const Index = () => {
   }, [user.error, student.error, prof.error]);
 
   const handleChange = (event) => {
-    if (event.target.name.split(".")[0] == "address") {
-      setForm({
-        ...form,
-        address: {
-          ...form.address,
-          [event.target.name.split(".")[1]]: event.target.value,
-        },
-      });
-    } else {
-      setForm({
-        ...form,
-        [event.target.name]: event.target.value,
-      });
-    }
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+    });
 
     if (event.target.name.split(".")[0] == "student") {
-      if (
-        event.target.name.split(".")[1] == "niveauEtude" 
-      ) {
+      if (event.target.name.split(".")[1] == "niveauEtude") {
         setFormStudent({
           ...formStudent,
           [event.target.name.split(".")[1]]:
@@ -144,20 +126,10 @@ const Index = () => {
     }
 
     if (event.target.name.split(".")[0] == "prof") {
-      if (event.target.name.split(".")[1] == "address") {
-        setFormProf({
-          ...formProf,
-          address: {
-            ...formProf.address,
-            [event.target.name.split(".")[2]]: event.target.value,
-          },
-        });
-      } else {
-        setFormProf({
-          ...formProf,
-          [event.target.name.split(".")[1]]: event.target.value,
-        });
-      }
+      setFormProf({
+        ...formProf,
+        [event.target.name.split(".")[1]]: event.target.value,
+      });
     }
   };
 
@@ -218,33 +190,6 @@ const Index = () => {
               placeholder=""
               onChange={handleChange}
               value={form.phone}
-              required
-            />
-            <Input
-              name="address.city"
-              label="City:"
-              type="text"
-              placeholder="New York"
-              onChange={handleChange}
-              value={form.address.city}
-              required
-            />
-            <Input
-              name="address.zipCode"
-              label="ZIP Code:"
-              type="text"
-              placeholder="56987"
-              onChange={handleChange}
-              value={form.address.zipCode}
-              required
-            />
-            <Input
-              name="address.street"
-              label="Street:"
-              type="text"
-              placeholder="9, av. George Carlos"
-              onChange={handleChange}
-              value={form.address.street}
               required
             />
           </div>
