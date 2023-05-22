@@ -277,7 +277,7 @@ const List = {
 
     const [isLoading, setLoading] = useState(true);
 
-    const [fetchLessons, setFetchMission] = useFetch({
+    const [fetchLessons, setFetchLessons] = useFetch({
       url: "/cours/cours",
       method: "GET",
       body: null,
@@ -291,14 +291,14 @@ const List = {
     const listItems = dataList?.map((lesson, index) => (
       <Item.Lesson
         key={index}
-        mission={lesson}
+        lesson={lesson}
         updateList={fetchLessons.fetchData}
       />
     ));
 
     useEffect(() => {
       if (fetchLessons.data.success) {
-        setDataList(fetchLessons.data.objects);
+        setDataList(fetchLessons.data.lessons);
       } else {
         fetchLessons.fetchData();
       }

@@ -19,7 +19,7 @@ const Item = {
       if (deleteLesson.data.success) {
         updateList();
         Notification.success(
-          `Success: Lesson "${deleteLesson.data.lesson.name}" is deleted`
+          `Success: Lesson "${deleteLesson.data.lesson.title}" is deleted`
         );
       }
     }, [deleteLesson.data]);
@@ -37,15 +37,7 @@ const Item = {
       <>
         <div className={styles.item}>
           <div>
-            <Input
-              name="name"
-              type="text"
-              placeholder={lesson.name}
-              onChange={handleChange}
-              value={form.name}
-              disabled={!isEdit}
-              required
-            />
+            <span>{lesson.title}</span>
           </div>
           <div>
             <Button name="edit" type="submit" onClick={handleClick}>
