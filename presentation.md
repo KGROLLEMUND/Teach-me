@@ -42,6 +42,24 @@ La stratégie pour le CI/CD est la suivante :
 
 https://github.com/users/KGROLLEMUND/projects/1
 
+## Pour lancer le projet
+
+Télécharger le projet 
+
+Puis installer les dependencies :
+
+npm i
+
+Puis lancer la commande
+
+Terminal Front (teach-me):
+
+npm run dev
+
+Terminal Serveur:
+
+npm run dev
+
 ## Repartition des tâches 
 
 - Front (Filipp, Zakia, Rihab)
