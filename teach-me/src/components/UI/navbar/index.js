@@ -5,7 +5,6 @@ import Link from "next/link";
 import UserContext from "@/components/context";
 import { useRouter } from "next/router";
 import Loading from "../loading";
-import Button from "../button";
 
 const NavBar = () => {
   const router = useRouter();

@@ -38,10 +38,10 @@ const List = {
       setLoading(fetchObjects.loading);
     }, [fetchObjects.loading]);
 
-    const listItems = dataList?.map((skill, index) => (
-      <Item.Skill
+    const listItems = dataList?.map((object, index) => (
+      <Item.Object
         key={index}
-        skill={skill}
+        object={object}
         updateList={fetchObjects.fetchData}
         isAdmin={user.isAdmin}
         onChange={onChange}
@@ -66,7 +66,7 @@ const List = {
 
     useEffect(() => {
       if (fetchObjects.data.success) {
-        setDataList(fetchObjects.data.skills);
+        setDataList(fetchObjects.data.objects);
       } else {
         fetchObjects.fetchData();
       }
@@ -278,7 +278,7 @@ const List = {
     const [isLoading, setLoading] = useState(true);
 
     const [fetchLessons, setFetchMission] = useFetch({
-      url: "/missions/missions",
+      url: "/cours/cours",
       method: "GET",
       body: null,
       token: localStorage.getItem("token"),
@@ -298,7 +298,7 @@ const List = {
 
     useEffect(() => {
       if (fetchLessons.data.success) {
-        setDataList(fetchLessons.data.skills);
+        setDataList(fetchLessons.data.objects);
       } else {
         fetchLessons.fetchData();
       }
