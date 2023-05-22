@@ -1,0 +1,43 @@
+@import "@/styles/colors.scss";
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: shade($primary-color, 40);
+
+  height: max-content;
+  width: 32rem;
+
+  border-radius: 1rem;
+
+  user-select: none;
+
+  .head {
+    text-align: center;
+    font-size: xx-large;
+
+    color: $trird-color;
+
+    width: 90%;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px $trird-color solid;
+  }
+
+  .content {
+    font-size: x-large;
+  }
+
+  .link {
+    padding: 1rem;
+    margin-bottom: 2rem;
+
+    border-radius: 1rem;
+    text-decoration: none;
+  }
+  :not(:first-child) {
+    margin-top: 2rem;
+  }
+}

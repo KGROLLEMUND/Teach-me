@@ -1,0 +1,9 @@
+@import "@/styles/colors.scss";
+
+.header {
+  user-select: none;
+
+  :last-child {
+    color: $trird-color;
+  }
+}

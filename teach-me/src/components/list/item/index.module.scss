@@ -1,0 +1,25 @@
+@import "@/styles/colors.scss";
+
+.item {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    background-color: tint($primary-color, 5);
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+  }
+}

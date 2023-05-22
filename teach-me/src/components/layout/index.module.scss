@@ -1,0 +1,61 @@
+@import "@/styles/colors.scss";
+
+.main {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  background-color: shade($primary-color, 40);
+  width: 100%;
+  height: 100%;
+
+  color: $fourth-color;
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    &[page="login"] {
+      width: max-content;
+    }
+
+    width: 75%;
+    text-align: center;
+
+    user-select: none;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+  div[styles="btn-row-center"] {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  div[styles="row"] {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    max-width: 64rem;
+  }
+  
+  div[styles="col"] {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 54rem;
+    
+    margin: 1rem;
+  }
+
+  a {
+    color: $trird-color;
+  }
+}

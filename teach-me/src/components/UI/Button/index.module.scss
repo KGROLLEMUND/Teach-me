@@ -1,0 +1,74 @@
+@import "@/styles/colors.scss";
+
+.button {
+  font-size: large;
+
+  width: max-content;
+  height: 2.5rem;
+
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 0.5rem;
+
+  border: 1px solid $fourth-color;
+  border-radius: 0.5rem;
+
+  background-color: shade($primary-color, 40);
+  color: $fourth-color;
+
+  transition: all 0.25s ease-in-out;
+  user-select: none;
+
+  white-space: nowrap;
+
+  :last-child {
+    transition: all 0.25s ease-in-out;
+    color: $trird-color;
+  }
+
+  &:not(:disabled):hover {
+    :last-child {
+      color: shade($primary-color, 40);
+    }
+
+    border: 1px solid $trird-color;
+    background-color: $trird-color;
+    color: shade($primary-color, 40);
+
+    svg {
+      stroke: shade($primary-color, 40);
+    }
+  }
+
+  &:not(:disabled):active {
+    :last-child {
+      color: shade($primary-color, 40);
+    }
+
+    border: 1px solid shade($trird-color, 20);
+    background-color: shade($trird-color, 20);
+    color: shade($primary-color, 40);
+
+    svg {
+      stroke: shade($primary-color, 40);
+    }
+  }
+
+  &:disabled {
+    :last-child {
+      color: $trird-color;
+    }
+
+    cursor: not-allowed;
+
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    background-color: shade($primary-color, 40);
+
+    svg {
+      stroke: $primary-color;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@import "@/styles/colors.scss";
+
+.searchbar {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+
+  height: 3rem;
+  width: 100%;
+
+  user-select: none;
+
+  .input {
+    width: 100%;
+  }
+}

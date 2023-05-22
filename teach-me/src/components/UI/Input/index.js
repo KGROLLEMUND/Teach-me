@@ -1,24 +1,12 @@
 import styles from "./index.module.scss";
 
-const Input = ({label, name, type, onChange, value, isRequired, placeholder}) => {
-    return (
-        <div className={styles.wrapper}>
-            {
-                label && (
-                    <label>{label}</label>
-                )
-            }
-
-            <input 
-            name={name}
-            type={type}
-            onChange={onChange}
-            value={value}
-            required={isRequired}
-            placeholder={placeholder}
-            />
-        </div>
-    );
-}
+const Input = (props) => {
+  return (
+    <div className={styles.input}>
+      {props.label && <label>{props.label}</label>}
+      {props.type == "textarea" ? <textarea {...props} /> : <input {...props} />}
+    </div>
+  );
+};
 
 export default Input;
