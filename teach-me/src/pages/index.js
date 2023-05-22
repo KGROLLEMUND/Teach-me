@@ -44,7 +44,7 @@ const Index = () => {
               </Header>
               <div styles="row">
                 <List.Users />
-                <List.Skills />
+                <List.Objects />
               </div>
             </>
           ) : (

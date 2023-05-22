@@ -57,24 +57,15 @@ const NavBar = () => {
       <div className={styles.title}>
         <Link href="/">
           <span>
-            <b>Projet Dev Front</b>
+            <b>Teach Me</b>
           </span>
         </Link>
       </div>
       <div className={styles.links}>
-        {user.isAdmin ? (
+        {!user.isAdmin && (
           <>
-            <Link href="/users">
-              <span>Missions</span>
-            </Link>
-          </>
-        ) : (
-          <>
-            <Link href="/missions">
-              <span>Missions</span>
-            </Link>
-            <Link href="/freelances">
-              <span>Freelances</span>
+            <Link href="/lessons">
+              <span>Lessons</span>
             </Link>
           </>
         )}

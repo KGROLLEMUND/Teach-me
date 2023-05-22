@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import UserContext from "../context";
 
 const List = {
-  Skills({ onChange }) {
+  Objects({ onChange }) {
     const { user } = useContext(UserContext);
 
     const [dataList, setDataList] = useState();
@@ -22,27 +22,27 @@ const List = {
       name: "",
     });
 
-    const [fetchSkills, setFetchSkills] = useFetch({
-      url: "/skill",
+    const [fetchObjects, setFetchObjects] = useFetch({
+      url: "/matiere",
       method: "GET",
       body: null,
     });
 
-    const [fetchAddSkills, setFetchAddSkills] = useFetch({
-      url: "/skill",
+    const [fetchAddObjects, setFetchAddObjects] = useFetch({
+      url: "/matiere",
       method: "POST",
       body: form,
     });
 
     useEffect(() => {
-      setLoading(fetchSkills.loading);
-    }, [fetchSkills.loading]);
+      setLoading(fetchObjects.loading);
+    }, [fetchObjects.loading]);
 
     const listItems = dataList?.map((skill, index) => (
       <Item.Skill
         key={index}
         skill={skill}
-        updateList={fetchSkills.fetchData}
+        updateList={fetchObjects.fetchData}
         isAdmin={user.isAdmin}
         onChange={onChange}
       />
@@ -51,39 +51,39 @@ const List = {
     useEffect(() => {
       const token = localStorage.getItem("token");
 
-      if (!fetchSkills.fetchProps.token) {
-        setFetchSkills((props) => ({ ...props, token: token }));
+      if (!fetchObjects.fetchProps.token) {
+        setFetchObjects((props) => ({ ...props, token: token }));
       }
-    }, [fetchSkills.fetchProps.token, setFetchSkills]);
+    }, [fetchObjects.fetchProps.token, setFetchObjects]);
 
     useEffect(() => {
       const token = localStorage.getItem("token");
 
-      if (!fetchAddSkills.fetchProps.token) {
-        setFetchAddSkills((props) => ({ ...props, token: token }));
+      if (!fetchAddObjects.fetchProps.token) {
+        setFetchAddObjects((props) => ({ ...props, token: token }));
       }
-    }, [fetchAddSkills.fetchProps.token, setFetchAddSkills]);
+    }, [fetchAddObjects.fetchProps.token, setFetchAddObjects]);
 
     useEffect(() => {
-      if (fetchSkills.data.success) {
-        setDataList(fetchSkills.data.skills);
+      if (fetchObjects.data.success) {
+        setDataList(fetchObjects.data.skills);
       } else {
-        fetchSkills.fetchData();
+        fetchObjects.fetchData();
       }
-    }, [fetchSkills.data]);
+    }, [fetchObjects.data]);
 
     useEffect(() => {
-      if (fetchAddSkills.data.success) {
-        fetchSkills.fetchData();
-        Notification.success(fetchAddSkills.data.message);
+      if (fetchAddObjects.data.success) {
+        fetchObjects.fetchData();
+        Notification.success(fetchAddObjects.data.message);
       }
-    }, [fetchAddSkills.data]);
+    }, [fetchAddObjects.data]);
 
     useEffect(() => {
-      if (fetchAddSkills.error) {
-        Notification.success(fetchAddSkills.error.message);
+      if (fetchAddObjects.error) {
+        Notification.success(fetchAddObjects.error.message);
       }
-    }, [fetchAddSkills.error]);
+    }, [fetchAddObjects.error]);
 
     const handleChange = (event) => {
       setForm({
@@ -93,14 +93,14 @@ const List = {
     };
 
     const handleClick = (event) => {
-      fetchAddSkills.fetchData();
+      fetchAddObjects.fetchData();
     };
 
     return (
       <>
         <div className={styles.list}>
           <span className={styles.title}>
-            <b>Skills</b>
+            <b>Objects</b>
           </span>
           <div className={styles.body}>
             {isLoading ? (
@@ -113,12 +113,12 @@ const List = {
                     <Input
                       name="name"
                       type="text"
-                      placeholder="ex. Java"
+                      placeholder="ex. Math"
                       value={form.name}
                       onChange={handleChange}
                       required
                     />
-                    <Button onClick={handleClick}>+ Add skill</Button>
+                    <Button onClick={handleClick}>+ Add object</Button>
                   </div>
                 )}
               </div>
@@ -127,7 +127,7 @@ const List = {
           <div className={styles.panel}>
             <Button
               onClick={() => {
-                fetchSkills.fetchData();
+                fetchObjects.fetchData();
               }}
             >
               Refresh
