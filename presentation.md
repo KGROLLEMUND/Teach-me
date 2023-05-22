@@ -41,5 +41,6 @@ La stratégie pour le CI/CD est la suivante :
 
 - Front (Filipp, Zakia, Rihab)
 - API (Kyllian, Sofiane)
-
+##livrable Figma : 
+https://www.figma.com/proto/vOOVjmeNsWuMfoK2huaCTs/Doc-Hoc%3A-a-BCI-Language-Learning-Assistant-(Community)?type=design&node-id=15-432&scaling=min-zoom&page-id=0%3A1
 https://github.com/users/KGROLLEMUND/projects/1
