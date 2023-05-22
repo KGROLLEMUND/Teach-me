@@ -29,7 +29,6 @@ const Index = () => {
 
   const [formStudent, setFormStudent] = useState({
     niveauEtude: 1,
-    yearOfExperience: 1,
   });
 
   const [formProf, setFormProf] = useState({
@@ -106,20 +105,10 @@ const Index = () => {
   }, [user.error, student.error, prof.error]);
 
   const handleChange = (event) => {
-    if (event.target.name.split(".")[0] == "address") {
-      setForm({
-        ...form,
-        address: {
-          ...form.address,
-          [event.target.name.split(".")[1]]: event.target.value,
-        },
-      });
-    } else {
-      setForm({
-        ...form,
-        [event.target.name]: event.target.value,
-      });
-    }
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+    });
 
     if (event.target.name.split(".")[0] == "student") {
       if (event.target.name.split(".")[1] == "niveauEtude") {

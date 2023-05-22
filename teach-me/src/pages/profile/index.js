@@ -85,26 +85,13 @@ const Index = () => {
   };
 
   const handleChange = (event) => {
-    if (event.target.name.split(".")[0] == "address") {
-      setForm({
-        ...form,
-        address: {
-          ...form.address,
-          [event.target.name.split(".")[1]]: event.target.value,
-        },
-      });
-    } else {
-      setForm({
-        ...form,
-        [event.target.name]: event.target.value,
-      });
-    }
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+    });
 
     if (event.target.name.split(".")[0] == "student") {
-      if (
-        event.target.name.split(".")[1] == "rate" ||
-        event.target.name.split(".")[1] == "yearOfExperience"
-      ) {
+      if (event.target.name.split(".")[1] == "niveauEtude") {
         setForm({
           ...form,
           student: {
@@ -139,8 +126,6 @@ const Index = () => {
     event.preventDefault();
 
     if (event.target.name == "Save") {
-      console.log(form);
-
       userUpdate.fetchData();
       updateUser(form);
       if (!user.isAdmin) {
