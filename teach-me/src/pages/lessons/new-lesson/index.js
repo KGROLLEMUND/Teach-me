@@ -63,7 +63,7 @@ const Index = () => {
     event.preventDefault();
     createLesson.fetchData();
 
-    // router.push('/lessons');
+    router.push('/lessons');
   };
 
   return (

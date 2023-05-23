@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
-import styles from "./index.module.scss";
-import useFetch from "@/util/useFetch";
-import Loading from "../UI/loading";
-import SearchBar from "../UI/searchbar";
-import Button from "../UI/button";
-import Item from "./item";
-import Input from "../UI/input";
-import Notification from "../UI/notification";
-import { useRouter } from "next/router";
-import UserContext from "../context";
+import React, { useContext, useEffect, useState } from 'react';
+import styles from './index.module.scss';
+import useFetch from '@/util/useFetch';
+import Loading from '../UI/loading';
+import SearchBar from '../UI/searchbar';
+import Button from '../UI/button';
+import Item from './item';
+import Input from '../UI/input';
+import Notification from '../UI/notification';
+import { useRouter } from 'next/router';
+import UserContext from '../context';
 
 const List = {
   Objects({ onChange }) {
@@ -19,18 +19,18 @@ const List = {
     const [isLoading, setLoading] = useState(true);
 
     const [form, setForm] = useState({
-      name: "",
+      name: '',
     });
 
     const [fetchObjects, setFetchObjects] = useFetch({
-      url: "/matiere",
-      method: "GET",
+      url: '/matiere',
+      method: 'GET',
       body: null,
     });
 
     const [fetchAddObjects, setFetchAddObjects] = useFetch({
-      url: "/matiere",
-      method: "POST",
+      url: '/matiere',
+      method: 'POST',
       body: form,
     });
 
@@ -49,7 +49,7 @@ const List = {
     ));
 
     useEffect(() => {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem('token');
 
       if (!fetchObjects.fetchProps.token) {
         setFetchObjects((props) => ({ ...props, token: token }));
@@ -57,7 +57,7 @@ const List = {
     }, [fetchObjects.fetchProps.token, setFetchObjects]);
 
     useEffect(() => {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem('token');
 
       if (!fetchAddObjects.fetchProps.token) {
         setFetchAddObjects((props) => ({ ...props, token: token }));
@@ -118,7 +118,9 @@ const List = {
                       onChange={handleChange}
                       required
                     />
-                    <Button onClick={handleClick}>+ Add object</Button>
+                    <Button onClick={handleClick}>
+                      + Add object
+                    </Button>
                   </div>
                 )}
               </div>
@@ -144,10 +146,10 @@ const List = {
     const [isLoading, setLoading] = useState(true);
 
     const [fetchUsers, setFetchUsers] = useFetch({
-      url: "/user/admin/users",
-      method: "GET",
+      url: '/user/admin/users',
+      method: 'GET',
       body: null,
-      token: localStorage.getItem("token"),
+      token: localStorage.getItem('token'),
     });
 
     useEffect(() => {
@@ -155,7 +157,11 @@ const List = {
     }, [fetchUsers.loading]);
 
     const listItems = dataList?.map((user, index) => (
-      <Item.User key={index} user={user} updateList={fetchUsers.fetchData} />
+      <Item.User
+        key={index}
+        user={user}
+        updateList={fetchUsers.fetchData}
+      />
     ));
 
     useEffect(() => {
@@ -210,10 +216,10 @@ const List = {
     const [isLoading, setLoading] = useState(true);
 
     const [fetchUsers, setFetchUsers] = useFetch({
-      url: "/user/admin/users",
-      method: "GET",
+      url: '/user/admin/users',
+      method: 'GET',
       body: null,
-      token: localStorage.getItem("token"),
+      token: localStorage.getItem('token'),
     });
 
     useEffect(() => {
@@ -221,7 +227,11 @@ const List = {
     }, [fetchUsers.loading]);
 
     const listItems = dataList?.map((user, index) => (
-      <Item.User key={index} user={user} updateList={fetchUsers.fetchData} />
+      <Item.User
+        key={index}
+        user={user}
+        updateList={fetchUsers.fetchData}
+      />
     ));
 
     useEffect(() => {
@@ -272,40 +282,57 @@ const List = {
 
   Lessons() {
     const router = useRouter();
+    const { user, loading } = useContext(UserContext);
 
     const [dataList, setDataList] = useState();
 
     const [isLoading, setLoading] = useState(true);
 
     const [fetchLessons, setFetchLessons] = useFetch({
-      url: "/cours/cours",
-      method: "GET",
+      url: null,
+      method: 'GET',
       body: null,
-      token: localStorage.getItem("token"),
+      token: localStorage.getItem('token'),
     });
 
     useEffect(() => {
       setLoading(fetchLessons.loading);
     }, [fetchLessons.loading]);
 
+    useEffect(() => {
+      if (fetchLessons.data.success) {
+        setDataList(fetchLessons.data.lessons);
+      } else if (fetchLessons.fetchProps.url) {
+        fetchLessons.fetchData();
+      }
+    }, [fetchLessons.data, fetchLessons.fetchProps.url]);
+
     const listItems = dataList?.map((lesson, index) => (
       <Item.Lesson
         key={index}
         lesson={lesson}
         updateList={fetchLessons.fetchData}
+        user={user}
       />
     ));
 
     useEffect(() => {
-      if (fetchLessons.data.success) {
-        setDataList(fetchLessons.data.lessons);
-      } else {
-        fetchLessons.fetchData();
+      if (user.userType == 'PROF') {
+        setFetchLessons((props) => ({
+          ...props,
+          url: '/cours/my-cours',
+        }));
       }
-    }, [fetchLessons.data]);
+      if (user.userType == 'STUDENT') {
+        setFetchLessons((props) => ({
+          ...props,
+          url: '/cours/all-cours',
+        }));
+      }
+    }, [fetchLessons.fetchProps.url]);
 
     const handleClick = (event) => {
-      router.push("/lessons/new-lesson");
+      router.push('/lessons/new-lesson');
     };
 
     return (
@@ -317,9 +344,13 @@ const List = {
             ) : (
               <div>
                 {listItems}
-                <div className={styles.panel}>
-                  <Button onClick={handleClick}>+ Add lesson</Button>
-                </div>
+                {user.userType == 'PROF' && (
+                  <div className={styles.panel}>
+                    <Button onClick={handleClick}>
+                      + Add lesson
+                    </Button>
+                  </div>
+                )}
               </div>
             )}
           </div>

@@ -7,10 +7,17 @@ import Input from '@/components/UI/input';
 import Loading from '@/components/UI/loading';
 
 const Item = {
-  Lesson({ lesson, updateList }) {
+  Lesson({ lesson, updateList, user }) {
     const [deleteLesson, setFetchDeleteLesson] = useFetch({
       url: `/cours/${lesson._id}`,
       method: 'DELETE',
+      body: null,
+      token: localStorage.getItem('token'),
+    });
+
+    const [joinLesson, setFetchJoinLesson] = useFetch({
+      url: `/proposition/create/${lesson._id}`,
+      method: 'POST',
       body: null,
       token: localStorage.getItem('token'),
     });
@@ -24,12 +31,29 @@ const Item = {
       }
     }, [deleteLesson.data]);
 
+    useEffect(() => {
+      console.log(joinLesson.data);
+      if (joinLesson.data.success) {
+        Notification.success(
+          `Success: Join to "${joinLesson.data}" `
+        );
+      }
+    }, [joinLesson.data]);
+
+    useEffect(() => {
+      console.log(joinLesson.error);
+    }, [joinLesson.error]);
+
     const handleClick = (event) => {
       if (event.target.name == 'delete') {
         deleteLesson.fetchData();
       }
 
       if (event.target.name == 'edit') {
+      }
+
+      if (event.target.name == 'join') {
+        joinLesson.fetchData();
       }
     };
 
@@ -39,14 +63,23 @@ const Item = {
           <div>
             <span>{lesson.title}</span>
           </div>
-          <div>
-            <Button name="edit" type="submit" onClick={handleClick}>
-              Edit
-            </Button>
-            <Button name="delete" onClick={handleClick}>
-              Delete
-            </Button>
-          </div>
+          {user.userType == 'PROF' && (
+            <div>
+              <Button name="edit" type="submit" onClick={handleClick}>
+                Edit
+              </Button>
+              <Button name="delete" onClick={handleClick}>
+                Delete
+              </Button>
+            </div>
+          )}
+          {user.userType == 'STUDENT' && (
+            <div>
+              <Button name="join" type="submit" onClick={handleClick}>
+                Join
+              </Button>
+            </div>
+          )}
         </div>
       </>
     );
