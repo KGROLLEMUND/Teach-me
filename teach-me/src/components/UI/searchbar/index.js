@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./index.module.scss";
 
-import Button from "../button";
-import Input from "../input";
+import Button from "../Button";
+import Input from "../Input";
 import useFetch from "@/util/useFetch";
 import Notification from "../notification";
 

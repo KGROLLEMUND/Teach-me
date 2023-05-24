@@ -1,7 +1,7 @@
 import Layout from "@/components/layout";
 import Link from "next/link";
 import styles from "./index.module.scss";
-import Button from "../UI/button";
+import Button from "../UI/Button";
 
 const getMessage = (code) => {
   switch (code) {
