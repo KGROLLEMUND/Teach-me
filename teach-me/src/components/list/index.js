@@ -11,19 +11,61 @@ import { useRouter } from 'next/router';
 import UserContext from '../context';
 
 const List = {
-  Propositions({ list }) {
+  Propositions() {
+    const [dataList, setDataList] = useState();
+
+    const [isLoading, setLoading] = useState(true);
+
+    const [fetchPropos, setFetchPropos] = useFetch({
+      url: `/proposition/my-propositions`,
+      method: 'GET',
+      body: null,
+      token: localStorage.getItem('token'),
+    });
+
+    useEffect(() => {
+      setLoading(fetchPropos.loading);
+    }, [fetchPropos.loading]);
+
+    useEffect(() => {
+      if (fetchPropos.data.success) {
+        setDataList(fetchPropos.data.propositions);
+      } else {
+        fetchPropos.fetchData();
+      }
+    }, [fetchPropos.data]);
+
+    useEffect(() => {
+      console.log(fetchPropos.error);
+    }, [fetchPropos.error]);
+
+    const listItems = dataList?.map((propos, index) => (
+      <Item.Proposition key={index} propos={propos} />
+    ));
+    return (
+      <>
+        <div className={styles.list}>
+          <span className={styles.title}>
+            <b>Propositions</b>
+          </span>
+          <div className={styles.body}>
+            <div>{listItems}</div>
+          </div>
+        </div>
+      </>
+    );
+  },
+
+  LessonPropositions({ list }) {
     const listItems = list?.map((propos, index) => (
-      <Item.Proposition
-        key={index}
-        propos={propos}
-      />
+      <Item.LessonProposition key={index} propos={propos} />
     ));
 
     return (
       <>
         <div className={styles.list}>
           <span className={styles.title}>
-            <b>Propositions</b>
+            <b>Lesson propositions</b>
           </span>
           <div className={styles.body}>
             <div>{listItems}</div>
@@ -288,6 +330,7 @@ const List = {
               dataList={dataList}
               setDataList={setDataList}
               setLoading={setLoading}
+              placeholder='Find user by email'
             />
             <Button
               onClick={() => {

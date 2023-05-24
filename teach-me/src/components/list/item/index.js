@@ -12,15 +12,83 @@ const Item = {
     return (
       <>
         <div className={styles.item}>
-          <div>Student</div>
           <div>
-            <span>{propos.student.firstName.toUpperCase()}</span>
-            <span>{propos.student.lastName.toUpperCase()}</span>
-            <span>{propos.datetime}</span>
+            <span>{propos.cours.title}</span>
           </div>
           <div>
-            <Button name="accept">Accept</Button>
-            <Button name="decline">Decline</Button>
+            <span>{propos.datetime.replace('T', ' ')}</span>
+          </div>
+          <div>
+            <span>{propos.status}</span>
+          </div>
+        </div>
+      </>
+    );
+  },
+
+  LessonProposition({ propos }) {
+    const [fetchPropos, setFetchPropos] = useFetch({
+      url: `/proposition/update/${propos._id}`,
+      method: 'PUT',
+      token: localStorage.getItem('token'),
+    });
+
+    const [status, setStatus] = useState(propos.status);
+
+    useEffect(() => {
+      if (fetchPropos.fetchProps.body) {
+        fetchPropos.fetchData();
+      }
+    }, [fetchPropos.fetchProps.body]);
+
+    useEffect(() => {
+      if (fetchPropos.data.success) {
+        Notification.success(`Success: ${fetchPropos.data.message}`);
+      }
+    }, [fetchPropos.data]);
+    useEffect(() => {
+      console.log(fetchPropos.error);
+    }, [fetchPropos.error]);
+
+    const handleClick = (event) => {
+      if (event.target.name == 'accept') {
+        setFetchPropos((props) => ({
+          ...props,
+          body: { status: 'ACCEPTED' },
+        }));
+        setStatus('ACCEPTED');
+      }
+      if (event.target.name == 'declice') {
+        setFetchPropos((props) => ({
+          ...props,
+          body: { status: 'REFUSED' },
+        }));
+        setStatus('REFUSED');
+      }
+    };
+
+    return (
+      <>
+        <div className={styles.item}>
+          <div>Student</div>
+          <div>
+            <span>{propos.student?.firstName.toUpperCase()}</span>
+            <span>{propos.student?.lastName.toUpperCase()}</span>
+            <span>{propos.datetime.replace('T', ' ')}</span>
+          </div>
+          <div>
+            {status == 'PENDING' ? (
+              <>
+                <Button name="accept" onClick={handleClick}>
+                  Accept
+                </Button>
+                <Button name="decline" onClick={handleClick}>
+                  Decline
+                </Button>
+              </>
+            ) : (
+              <span>{status}</span>
+            )}
           </div>
         </div>
       </>

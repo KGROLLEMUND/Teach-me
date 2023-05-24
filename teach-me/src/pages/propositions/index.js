@@ -58,37 +58,17 @@ const Index = () => {
   }, [fetchLesson.data]);
 
   return (
-    <Layout title="Teach Me - Details lesson">
+    <Layout title="Teach Me - Propositions">
       <NavBar />
       {isLoading || Object.keys(user).length == 0 ? (
         <Loading />
       ) : (
         <>
           <Header>
-            <span>Less</span>
-            <span>on</span>
+            <span>Proposi</span>
+            <span>tions</span>
           </Header>
-          <div>
-            <Input
-              name="title"
-              label="Title:"
-              type="text"
-              placeholder=""
-              value={data?.title}
-              disabled
-              required
-            />
-            <Input
-              name="description"
-              label="Description:"
-              type="textarea"
-              placeholder=""
-              value={data?.description}
-              disabled
-              required
-            />
-          </div>
-          <List.LessonPropositions list={data?.propositions} />
+          <List.Propositions />
         </>
       )}
     </Layout>

@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import styles from "./index.module.scss";
-import Link from "next/link";
+import React, { useContext, useEffect, useState } from 'react';
+import styles from './index.module.scss';
+import Link from 'next/link';
 
-import UserContext from "@/components/context";
-import { useRouter } from "next/router";
-import Loading from "../loading";
+import UserContext from '@/components/context';
+import { useRouter } from 'next/router';
+import Loading from '../loading';
 
 const NavBar = () => {
   const router = useRouter();
@@ -14,7 +14,7 @@ const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [modeView, setModeView] = useState("Admin");
+  const [modeView, setModeView] = useState('Admin');
 
   useEffect(() => {
     setIsLoading(loading);
@@ -25,25 +25,25 @@ const NavBar = () => {
       setShowMenu(false);
     };
 
-    window.addEventListener("click", handleWindowClick);
+    window.addEventListener('click', handleWindowClick);
   }, []);
 
   const handleClick = (event) => {
     switch (event.target.id) {
-      case "0":
-        const modes = ["Admin", "Freelance", "Company"];
+      case '0':
+        const modes = ['Admin', 'Freelance', 'Company'];
 
-        if (modeView == "Company") {
+        if (modeView == 'Company') {
           setModeView(modes[0]);
         } else {
           setModeView(modes[modes.indexOf(modeView) + 1]);
         }
 
         break;
-      case "1":
-        router.push("/profile", null, { shallow: true });
+      case '1':
+        router.push('/profile', null, { shallow: true });
         break;
-      case "2":
+      case '2':
         logout();
         break;
 
@@ -61,13 +61,24 @@ const NavBar = () => {
         </Link>
       </div>
       <div className={styles.links}>
-        {!user.isAdmin && (
-          <>
-            <Link href="/lessons">
-              <span>Lessons</span>
-            </Link>
-          </>
-        )}
+        {!user.isAdmin ? (
+          user.userType == 'STUDENT' ? (
+            <>
+              <Link href="/lessons">
+                <span>Lessons</span>
+              </Link>
+              <Link href="/propositions">
+                <span>Propositions</span>
+              </Link>
+            </>
+          ) : (
+            user.userType == 'PROF' && (
+              <Link href="/lessons">
+                <span>Lessons</span>
+              </Link>
+            )
+          )
+        ) : null}
       </div>
       <div
         id="menu"
@@ -85,7 +96,9 @@ const NavBar = () => {
         ) : (
           `Welcome, ${user.firstName[0].toUpperCase()}${user.firstName.slice(
             1
-          )} ${user.lastName[0].toUpperCase()}${user.lastName.slice(1)}`
+          )} ${user.lastName[0].toUpperCase()}${user.lastName.slice(
+            1
+          )}`
         )}
 
         {showMenu && (

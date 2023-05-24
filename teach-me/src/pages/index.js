@@ -64,8 +64,8 @@ const Index = () => {
           </div>
           <div>
             <Button onClick={handleClick}>
-              <span>Let&apos;s go to&nbsp;</span>
-              <span>begin</span>
+              <span>Let&apos;s&nbsp;</span>
+              <span>go</span>
             </Button>
           </div>
         </>
