@@ -1,6 +1,4 @@
-import Button from '@/components/UI/button';
 import Header from '@/components/UI/header';
-import Input from '@/components/UI/input';
 import Loading from '@/components/UI/loading';
 import NavBar from '@/components/UI/navbar';
 import Notification from '@/components/UI/notification';

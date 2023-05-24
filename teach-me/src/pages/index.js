@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import Layout from "@/components/layout";
 import Header from "@/components/UI/header";
-import Button from "@/components/UI/button";
+import Button from "@/components/UI/Button";
 import UserContext from "@/components/context";
 import NavBar from "@/components/UI/navbar";
 import Loading from "@/components/UI/loading";

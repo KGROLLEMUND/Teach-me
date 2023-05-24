@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from './index.module.scss';
 import useFetch from '@/util/useFetch';
-import Button from '@/components/UI/button';
+import Button from '@/components/UI/Button';
 import Notification from '@/components/UI/notification';
-import Input from '@/components/UI/input';
+import Input from '@/components/UI/Input';
 import Loading from '@/components/UI/loading';
 
 const Item = {
