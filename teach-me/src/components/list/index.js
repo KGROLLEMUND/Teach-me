@@ -11,6 +11,28 @@ import { useRouter } from 'next/router';
 import UserContext from '../context';
 
 const List = {
+  Propositions({ list }) {
+    const listItems = list?.map((propos, index) => (
+      <Item.Proposition
+        key={index}
+        propos={propos}
+      />
+    ));
+
+    return (
+      <>
+        <div className={styles.list}>
+          <span className={styles.title}>
+            <b>Propositions</b>
+          </span>
+          <div className={styles.body}>
+            <div>{listItems}</div>
+          </div>
+        </div>
+      </>
+    );
+  },
+
   Objects({ onChange }) {
     const { user } = useContext(UserContext);
 

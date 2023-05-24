@@ -12,6 +12,11 @@
   padding-left: 1rem;
   padding-right: 1rem;
 
+  & > * {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
   transition: all 0.25s ease-in-out;
 
   &:hover {

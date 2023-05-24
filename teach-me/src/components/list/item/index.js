@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import styles from './index.module.scss';
 import useFetch from '@/util/useFetch';
 import Button from '@/components/UI/button';
@@ -7,6 +8,25 @@ import Input from '@/components/UI/input';
 import Loading from '@/components/UI/loading';
 
 const Item = {
+  Proposition({ propos }) {
+    return (
+      <>
+        <div className={styles.item}>
+          <div>Student</div>
+          <div>
+            <span>{propos.student.firstName.toUpperCase()}</span>
+            <span>{propos.student.lastName.toUpperCase()}</span>
+            <span>{propos.datetime}</span>
+          </div>
+          <div>
+            <Button name="accept">Accept</Button>
+            <Button name="decline">Decline</Button>
+          </div>
+        </div>
+      </>
+    );
+  },
+
   Lesson({ lesson, updateList, user }) {
     const [deleteLesson, setFetchDeleteLesson] = useFetch({
       url: `/cours/${lesson._id}`,
@@ -15,10 +35,13 @@ const Item = {
       token: localStorage.getItem('token'),
     });
 
+    const [form, setForm] = useState();
+    const route = useRouter();
+
     const [joinLesson, setFetchJoinLesson] = useFetch({
       url: `/proposition/create/${lesson._id}`,
       method: 'POST',
-      body: null,
+      body: form,
       token: localStorage.getItem('token'),
     });
 
@@ -49,12 +72,19 @@ const Item = {
         deleteLesson.fetchData();
       }
 
-      if (event.target.name == 'edit') {
+      if (event.target.name == 'details') {
+        route.push(`/lessons/details/${lesson._id}`);
       }
 
-      if (event.target.name == 'join') {
+      if (event.target.name == 'join' && form) {
         joinLesson.fetchData();
       }
+    };
+
+    const handleChange = (event) => {
+      setForm(() => ({
+        datetime: event.target.value,
+      }));
     };
 
     return (
@@ -65,8 +95,8 @@ const Item = {
           </div>
           {user.userType == 'PROF' && (
             <div>
-              <Button name="edit" type="submit" onClick={handleClick}>
-                Edit
+              <Button name="details" onClick={handleClick}>
+                Details
               </Button>
               <Button name="delete" onClick={handleClick}>
                 Delete
@@ -75,6 +105,12 @@ const Item = {
           )}
           {user.userType == 'STUDENT' && (
             <div>
+              <Input
+                name="datetime"
+                type="datetime-local"
+                onChange={handleChange}
+                required
+              />
               <Button name="join" type="submit" onClick={handleClick}>
                 Join
               </Button>

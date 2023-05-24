@@ -29,7 +29,6 @@ const Index = () => {
   useEffect(() => {
     if (createLesson.error)
       Notification.error(`Error: ${createLesson.error.message}`);
-    console.log(createLesson.error);
   }, [createLesson.error]);
 
   useEffect(() => {
