@@ -219,7 +219,8 @@ const Index = () => {
                 <Input
                   name="student.niveauEtude"
                   label="Etude level:"
-                  type="number"
+                  type="text"
+                  placeholder="College ou Lycée"
                   onChange={handleChange}
                   value={formStudent.niveauEtude}
                   required
@@ -233,6 +234,7 @@ const Index = () => {
                   name="prof.niveauEnseignement"
                   label="Teaching level:"
                   type="text"
+                  placeholder="College ou Lycée"
                   onChange={handleChange}
                   value={formProf.niveauEnseignement}
                   required
