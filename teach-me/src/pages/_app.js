@@ -5,7 +5,7 @@ import { UserContextProvider } from "@/components/context";
 export default function App({ Component, pageProps }) {
   return (
     <UserContextProvider>
-      <Component {...pageProps} />
+                <Component {...pageProps} />
     </UserContextProvider>
   );
 }
