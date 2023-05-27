@@ -6,8 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "prettier --check .",
-    "format": "prettier --write ."
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "eslint": "8.38.0",
@@ -25,7 +26,11 @@
     }
   },
   "lint-staged": {
-    "*": "prettier --write"
+    "*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   },
   "devDependencies": {
     "husky": "^8.0.3",
