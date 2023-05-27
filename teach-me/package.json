@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "prepare": "husky install"
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "eslint": "8.38.0",
@@ -21,15 +21,11 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "next lint"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
-    ]
+    "*": "prettier --write"
   },
   "devDependencies": {
     "husky": "^8.0.3",
