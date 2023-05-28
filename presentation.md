@@ -26,6 +26,7 @@ Les outils utilisés pour le développement des produits sont les suivants :
 - Next JS
 - MongoDB 
 - React
+- NodeJS
 
 ## Stratégie pour le CI/CD
 
